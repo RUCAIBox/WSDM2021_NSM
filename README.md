@@ -1,4 +1,7 @@
 # WSDM2021_NSM (Neural State Machine for KBQA)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-multi-hop-knowledge-base-question/semantic-parsing-on-webquestionssp)](https://paperswithcode.com/sota/semantic-parsing-on-webquestionssp?p=improving-multi-hop-knowledge-base-question)
+
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improving-multi-hop-knowledge-base-question/knowledge-base-question-answering-on)](https://paperswithcode.com/sota/knowledge-base-question-answering-on?p=improving-multi-hop-knowledge-base-question)
 
 This is our Pytorch implementation for the paper:
 
@@ -33,6 +36,25 @@ Each dataset is organized with following structure:
   - `relations.txt`: file contains list of relations.
   - `vocab_new.txt`: vocab file.
   - `word_emb_300d.npy`: vocab related glove embeddings.
+
+## Results
+We provide result for : WebQuestionsSP (webqsp), Complex WebQuestions 1.1 (CWQ), and MetaQA.
+* We follow [GraftNet](https://github.com/OceanskySun/GraftNet) to conduct evaluation. Baseline results come from original paper or related paper.
+
+|Models | webqsp| MetaQA-1hop | MetaQA-2hop | MetaQA-3hop| CWQ |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+|KV-Mem| 46.7 | 96.2 | 82.7 | 48.9 | 21.1|
+|GraftNet| 66.4 | 97.0 | 94.8 |77.7 | 32.8|
+|PullNet| 68.1 | 97.0 | **99.9** | 91.4| 45.9|
+|SRN| - | 97.0 | 95.1 | 75.2 | - |
+|EmbedKGQA| 66.6 | **97.5** | 98.8 | 94.8 | -|
+|NSM| 68.7 | 97.1 | **99.9** | **98.9**| 47.6|
+|NSM+p| 73.9 | 97.3 | **99.9** | **98.9** | 48.3|
+|NSM+h| **74.3** | 97.2 | **99.9** | **98.9** | **48.8**|
+
+The leaderboard result for NSM+h is **53.9**, and we get **rank 2** at 22th May 2021. (We are supposed to be ranked as top-1, if we submit around WSDM 2021 ddl 17th August 2020.)
+![leaderboad](asset/leaderboard.png)
+
 
 ## Training Instruction
 Download preprocessed datasets from [google drive](https://drive.google.com/drive/folders/1qRXeuoL-ArQY7pJFnMpNnBu0G-cOz6xv?usp=sharing),
